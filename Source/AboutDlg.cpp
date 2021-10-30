@@ -152,7 +152,7 @@ BOOL CAboutDlg::OnInitDialog()
 	AfxFormatString1(aboutString, IDS_ABOUT_VERSION_FORMAT, str);
 #endif
 
-	SetDlgItemText(IDC_ABOUT1, aboutString);
+	SetDlgItemText(IDC_ABOUT1, aboutString+".fix1");
 
 	m_pMail = new CLinkLabel(LINK_MAIL);
 	m_pWeb = new CLinkLabel(LINK_WEB);

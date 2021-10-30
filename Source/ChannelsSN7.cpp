@@ -71,10 +71,13 @@ void CChannelHandlerSN7::HandleCustomEffects(int EffNum, int EffParam)
 		// Custom effects
 		switch (EffNum) {
 		case EF_SN_CONTROL:		// // //
-			if (EffParam >= 0x00 && EffParam <= 0x1F) {
-				SetStereo(EffParam && EffParam <= 0x10, EffParam >= 0x10);
-				break;
-			}
+			//if (EffParam >= 0x00 && EffParam <= 0x1F) {
+			//	SetStereo(EffParam && EffParam <= 0x10, EffParam >= 0x10);
+			if (EffParam == 0x00 || EffParam == 2) SetStereo(true, true);	//sh8bit
+			if (EffParam == 0x01) SetStereo(true, false);
+			if (EffParam == 0x03) SetStereo(false,true);
+			//	break;
+			//}
 			break;
 		case EF_DUTY_CYCLE:
 			m_iDefaultDuty = m_iDutyPeriod = EffParam;
@@ -281,7 +284,7 @@ void CNoiseChan::RefreshChannel()
 	char NoiseMode = !(m_iDutyPeriod & 0x01);		// // //
 
 	int newCtrl = (NoiseMode << 2) | Period;		// // //
-	if ((m_bTrigger && m_bNoiseReset) || newCtrl != m_iLastCtrl) {
+	if ((m_bTrigger && m_bNoiseReset == 1) || (m_bNoiseReset == 2) || newCtrl != m_iLastCtrl) { //sh8bit
 		WriteRegister(0x06, newCtrl);
 		m_iLastCtrl = newCtrl;
 	}
@@ -295,8 +298,9 @@ void CNoiseChan::HandleCustomEffects(int EffNum, int EffParam)
 	switch (EffNum) {
 	case EF_SN_CONTROL:
 		switch (EffParam) {
-		case 0xE0: m_bNoiseReset = false; return;
-		case 0xE1: m_bNoiseReset = m_bTrigger = true; return;
+		case 0xE0: m_bNoiseReset = 0; return;
+		case 0xE1: m_bNoiseReset = 1;  m_bTrigger = true; return;  //sh8bit
+		case 0xE2: m_bNoiseReset = 2; return;  //sh8bit
 		}
 	}
 

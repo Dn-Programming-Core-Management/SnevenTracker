@@ -23,17 +23,17 @@
 
 // Channel note struct, holds the data for each row in patterns
 struct stChanNote {
-	unsigned char Note;
-	unsigned char Octave;
-	unsigned char Vol;
-	unsigned char Instrument;
-	unsigned char EffNumber[MAX_EFFECT_COLUMNS];
-	unsigned char EffParam[MAX_EFFECT_COLUMNS];
+	unsigned char Note = 0;
+	unsigned char Octave = 0;
+	unsigned char Vol = MAX_VOLUME;
+	unsigned char Instrument = MAX_INSTRUMENTS;
+	unsigned char EffNumber[MAX_EFFECT_COLUMNS] = { EF_NONE,EF_NONE,EF_NONE,EF_NONE };
+	unsigned char EffParam[MAX_EFFECT_COLUMNS] = { 0,0,0,0 };
 
-	static const stChanNote BLANK;
+	//static const stChanNote BLANK;
 };
 
-const stChanNote stChanNote::BLANK = {0, 0, MAX_VOLUME, MAX_INSTRUMENTS, {EF_NONE, EF_NONE, EF_NONE, EF_NONE}, {0, 0, 0, 0}};
+//const stChanNote stChanNote::BLANK = {0, 0, MAX_VOLUME, MAX_INSTRUMENTS, {EF_NONE, EF_NONE, EF_NONE, EF_NONE}, {0, 0, 0, 0}};
 
 // TODO rename to CTrack perhaps?
 

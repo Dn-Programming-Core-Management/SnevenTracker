@@ -1,5 +1,15 @@
 # Change Log
 
+### Version 0.2.3
+
+- Game Gear panning is now controlled with `N01` to the left, `N02` to center, `N03` to the right.
+  - This has the side effect of breaking stereo functionality with modules made in previous SnevenTracker versions.
+- Added a new noise reset enable effect, `NE2`, allowing the noise to be reset every frame.
+
+- When a C-# (Copy) note is placed in the noise channel, inputting a note on Channel 3 will allow you to hear what the noise channel will sound like.
+- VGM export has been updated and reworked to function similarly to WAV export. The old method of exporting VGMs are still there, however.
+- Special thanks to Shiru for the changes made for this update.
+
 ### Version 0.2.2
 
 - Overloaded `NE0` / `NE1` for noise reset enable effect

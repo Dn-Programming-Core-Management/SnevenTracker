@@ -82,7 +82,7 @@ protected:
 
 private:
 	int m_iLastCtrl;		// // //
-	bool m_bNoiseReset;		// // //
+	int m_bNoiseReset;		// // // sh8bit: 0 no reset, 1 once at effect, 2 every frame until effect disabled
 	bool m_bTrigger;		// // // 0CC-FT has this built-in
 };
 

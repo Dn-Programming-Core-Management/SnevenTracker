@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// Английский (США) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -112,7 +112,7 @@ BEGIN
         MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
         MENUITEM "&Create NSF...\tCtrl+E",      ID_FILE_CREATE_NSF
-        MENUITEM "Create WAV...",               ID_FILE_CREATEWAV
+        MENUITEM "Create WAV/VGM...",           ID_FILE_CREATEWAV
         MENUITEM SEPARATOR
         MENUITEM "Import text...",              ID_FILE_IMPORTTEXT
         MENUITEM "Export text...",              ID_FILE_EXPORTTEXT
@@ -705,29 +705,30 @@ CAPTION "About SnevenTracker"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     LTEXT           "Copyright (C) 2016 HertzDevil",IDC_ABOUT3,54,92,167,11
-    DEFPUSHBUTTON   "OK",IDOK,228,64,50,16,WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,228,68,50,16,WS_GROUP
     LTEXT           "E-mail:",IDC_STATIC,54,108,24,10
     LTEXT           "This software is licensed under the GNU General Public\n License. Source is available on the Github repository.",IDC_STATIC,54,167,224,17
-    ICON            IDR_MAINFRAME,IDC_STATIC,7,63,21,20,SS_REALSIZEIMAGE
+    ICON            IDR_MAINFRAME,IDC_STATIC,7,63,20,20,SS_REALSIZEIMAGE
     LTEXT           "Contributions:",IDC_STATIC,54,191,224,9
     LTEXT           "All comments and feedback are welcome\nGreets to everyone who has contributed with bug reports and suggestions!",IDC_STATIC,54,137,224,26
     LTEXT           "nicetas.c@gmail.com",IDC_MAIL,84,108,70,10,SS_NOTIFY
     LTEXT           "http://hertzdevil.info",IDC_WEBPAGE,84,121,95,9,SS_NOTIFY
     LTEXT           "Web:",IDC_STATIC,54,121,24,9
-    LTEXT           "Libraries:",IDC_STATIC,54,268,224,8
-    LTEXT           "- Blip_buffer 0.4.0 is Copyright (C) blargg (http://www.slack.net/~ant/nes-emu/)\n",IDC_STATIC,54,282,224,16
-    LTEXT           "- Fast Fourier Transform code is (C) Reliable Software",IDC_STATIC,54,301,224,8
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,54,278,211,1
-    LTEXT           "- Icon is made by Kuhneghetz",IDC_STATIC,54,216,224,9
-    LTEXT           "- Toolbar icons are made by ilkke",IDC_STATIC,54,227,224,9
+    LTEXT           "Libraries:",IDC_STATIC,54,272,224,8
+    LTEXT           "- Blip_buffer 0.4.0 is Copyright (C) blargg (http://www.slack.net/~ant/nes-emu/)\n",IDC_STATIC,54,286,224,16
+    LTEXT           "- Fast Fourier Transform code is (C) Reliable Software",IDC_STATIC,54,305,224,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,54,282,211,1
+    LTEXT           "- Icon is made by Kuhneghetz",IDC_STATIC,54,215,224,9
+    LTEXT           "- Toolbar icons are made by ilkke",IDC_STATIC,54,226,224,9
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,54,201,211,1
     LTEXT           "A SN76489 music tracker",IDC_ABOUT2,54,76,167,11,SS_NOPREFIX
-    LTEXT           "- Module text import/export by rainwarrior",IDC_STATIC,54,238,224,9
+    LTEXT           "- Module text import/export by rainwarrior",IDC_STATIC,54,237,224,9
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,49,287,1
-    LTEXT           "A SN76489 music tracker",IDC_ABOUT1,54,58,167,11,SS_NOPREFIX
+    LTEXT           "A SN76489 music tracker",IDC_ABOUT1,54,58,224,11,SS_NOPREFIX
     CONTROL         "",IDC_HEAD,"Static",SS_OWNERDRAW,0,0,287,49
     LTEXT           "- Original software by jsr",IDC_STATIC,54,205,224,9
-    LTEXT           "- vgm_cmp VGM compressor by Valley Bell",IDC_STATIC,54,249,224,9
+    LTEXT           "- vgm_cmp VGM compressor by Valley Bell",IDC_STATIC,54,248,224,9
+    LTEXT           "- patched for stereo, noise mode, VGM export by shiru8bit",IDC_STATIC,54,259,224,9
 END
 
 IDD_MAINFRAME DIALOGEX 0, 0, 413, 126
@@ -948,7 +949,7 @@ END
 
 IDD_CREATEWAV DIALOGEX 0, 0, 151, 208
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Create wave file"
+CAPTION "Create WAV or VGM file"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "Begin",IDC_BEGIN,37,187,52,14
@@ -1695,12 +1696,12 @@ BEGIN
     ID_EDIT_VOLUMEMASK      "Disables insertion of values in the volume column"
 END
 
-#endif    // English (United States) resources
+#endif    // Английский (США) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Swedish (Sweden) resources
+// Шведский (Швеция) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SVE)
 LANGUAGE LANG_SWEDISH, SUBLANG_SWEDISH
@@ -1741,7 +1742,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Swedish (Sweden) resources
+#endif    // Шведский (Швеция) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

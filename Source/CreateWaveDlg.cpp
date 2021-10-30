@@ -104,8 +104,8 @@ void CCreateWaveDlg::OnBnClickedBegin()
 	}
 
 	CWavProgressDlg ProgressDlg;
-	CString fileFilter = LoadDefaultFilter(IDS_FILTER_WAV, _T(".wav"));	
-	CFileDialog SaveDialog(FALSE, _T("wav"), FileName, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, fileFilter);
+	CString fileFilter = _T("VGM file (*.vgm)|*.vgm|")+LoadDefaultFilter(IDS_FILTER_WAV, _T(".wav"));	//sh8bit
+	CFileDialog SaveDialog(FALSE, _T("vgm"), FileName, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, fileFilter);
 
 	// Close this dialog
 	EndDialog(0);

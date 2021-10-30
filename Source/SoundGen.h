@@ -336,6 +336,7 @@ private:
 
 	// Rendering
 	bool				m_bRendering;
+	bool				m_bRenderingWave;	//sh8bit
 	bool				m_bRequestRenderStop;
 	render_end_t		m_iRenderEndWhen;
 	unsigned int		m_iRenderEndParam;

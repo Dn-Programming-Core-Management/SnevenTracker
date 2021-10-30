@@ -667,7 +667,7 @@ bool CSoundGen::PlayBuffer()
 {
 	if (m_bRendering) {
 		// Output to file
-		m_wfWaveFile.WriteWave(m_pAccumBuffer, m_iBufSizeBytes);
+		if(m_bRenderingWave) m_wfWaveFile.WriteWave(m_pAccumBuffer, m_iBufSizeBytes);	//sh8bit
 		m_iBufferPtr = 0;
 	}
 	else {
@@ -1360,12 +1360,23 @@ bool CSoundGen::RenderToFile(LPTSTR pFile, render_end_t SongEndType, int SongEnd
 		m_iRenderEndParam = m_pDocument->ScanActualLength(Track, m_iRenderEndParam, m_iRenderRowCount);
 	}
 
-	if (!m_wfWaveFile.OpenFile(pFile, theApp.GetSettings()->Sound.iSampleRate, theApp.GetSettings()->Sound.iSampleSize, 2)) {		// // //
-		AfxMessageBox(IDS_FILE_OPEN_ERROR);
-		return false;
+	m_bRenderingWave = true;
+
+	if (_stricmp(PathFindExtensionA(pFile), ".vgm") == 0) m_bRenderingWave = false;
+
+	if (m_bRenderingWave)	//sh8bit
+	{
+		if (!m_wfWaveFile.OpenFile(pFile, theApp.GetSettings()->Sound.iSampleRate, theApp.GetSettings()->Sound.iSampleSize, 2)) {		// // //
+			AfxMessageBox(IDS_FILE_OPEN_ERROR);
+			return false;
+		}
 	}
 	else
-		PostThreadMessage(WM_USER_START_RENDER, 0, 0);
+	{
+		VGMStartLogging(pFile);
+	}
+
+	PostThreadMessage(WM_USER_START_RENDER, 0, 0);
 
 	return true;
 }
@@ -1383,7 +1394,15 @@ void CSoundGen::StopRendering()
 	m_bRendering = false;
 	m_iPlayFrame = 0;
 	m_iPlayRow = 0;
-	m_wfWaveFile.CloseFile();
+	
+	if (m_bRenderingWave)	//sh8bit
+	{
+		m_wfWaveFile.CloseFile();
+	}
+	else
+	{
+		VGMStopLogging();
+	}
 
 	MakeSilent();
 	ResetBuffer();

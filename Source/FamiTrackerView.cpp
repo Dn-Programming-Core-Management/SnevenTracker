@@ -1698,6 +1698,26 @@ void CFamiTrackerView::PlayNote(unsigned int Channel, unsigned int Note, unsigne
 
 	theApp.GetSoundGenerator()->QueueNote(Channel, NoteData, NOTE_PRIO_2);
 
+	if (Channel >= 2) //sh8bit
+	{
+		CFamiTrackerDoc *pDoc = GetDocument();
+		stChanNote ChanNote;
+		int Track = static_cast<CMainFrame*>(GetParentFrame())->GetSelectedTrack();
+		int Frame = m_pPatternEditor->GetFrame();
+		int Row = m_pPatternEditor->GetRow();
+
+		if (Channel == 2)
+		{
+			pDoc->GetNoteData(Track, Frame, 3, Row, &ChanNote);
+			theApp.GetSoundGenerator()->QueueNote(3, ChanNote, NOTE_PRIO_1);
+		}
+		if (Channel == 3)
+		{
+			pDoc->GetNoteData(Track, Frame, 2, Row, &ChanNote);
+			theApp.GetSoundGenerator()->QueueNote(2, ChanNote, NOTE_PRIO_1);
+		}
+	}
+
 	if (theApp.GetSettings()->General.bPreviewFullRow) {
 		CFamiTrackerDoc *pDoc = GetDocument();
 		stChanNote ChanNote;
@@ -1748,6 +1768,26 @@ void CFamiTrackerView::HaltNote(unsigned int Channel)
 	NoteData.Instrument = GetInstrument();
 
 	theApp.GetSoundGenerator()->QueueNote(Channel, NoteData, NOTE_PRIO_2);
+
+	if (Channel >= 2) //sh8bit
+	{
+		CFamiTrackerDoc *pDoc = GetDocument();
+		stChanNote ChanNote;
+		int Track = static_cast<CMainFrame*>(GetParentFrame())->GetSelectedTrack();
+		int Frame = m_pPatternEditor->GetFrame();
+		int Row = m_pPatternEditor->GetRow();
+
+		if (Channel == 2)
+		{
+			NoteData.Note = HALT;
+			theApp.GetSoundGenerator()->QueueNote(3, NoteData, NOTE_PRIO_1);
+		}
+		if (Channel == 3)
+		{
+			NoteData.Note = HALT;
+			theApp.GetSoundGenerator()->QueueNote(2, NoteData, NOTE_PRIO_1);
+		}
+	}
 
 	if (theApp.GetSettings()->General.bPreviewFullRow) {
 		CFamiTrackerDoc *pDoc = GetDocument();
